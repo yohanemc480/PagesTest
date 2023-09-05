@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>複数の音源再生</title>
+    <!-- jQueryをインクルード -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li>
+            <audio class="audio-player" controls style="display:none;">
+                <source src="https://resources.download.minecraft.net/35/35bb19510f54742b870014129028ad0bee38879c" type="audio/ogg">
+                お使いのブラウザはaudio要素をサポートしていません。
+            </audio>
+            <button class="play-button">再生</button>
+            <button class="pause-button">一時停止</button>
+        </li>
+        <li>
+            <audio class="audio-player" controls style="display:none;">
+                <source src="https://resources.download.minecraft.net/1f/1feb74db490a786a656387fc2ac8d682730228e2" type="audio/ogg">
+                お使いのブラウザはaudio要素をサポートしていません。
+            </audio>
+            <button class="play-button">再生</button>
+            <button class="pause-button">一時停止</button>
+        </li>
+        <!-- 他のaudio要素も同様に追加できます -->
+    </ul>
+    
+    <script>
+        $(document).ready(function() {
+            // 再生ボタンをクリックしたときの処理
+            $(".play-button").on("click", function() {
+                var audio = $(this).prev(".audio-player")[0];
+                audio.play();
+            });
+
+            // 一時停止ボタンをクリックしたときの処理
+            $(".pause-button").on("click", function() {
+                var audio = $(this).prevAll(".audio-player")[0];
+                audio.pause();
+            });
+        });
+    </script>
+</body>
+</html>
